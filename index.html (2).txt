@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeaderRun</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: #222;
+    }
+    h1 {
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>LeaderRun</h1>
+  <canvas id="gameCanvas" width="900" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // background images
+    const backgrounds = ['bg1.jpg', 'bg2.jpg'];
+    const bgImgs = backgrounds.map(src => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
+    let currentBg = 0;
+
+    // player image (Modi)
+    const playerImg = new Image();
+    playerImg.src = 'modi.png';
+
+    // goal image (Meloni)
+    const goalImg = new Image();
+    goalImg.src = 'meloni.jpg';
+
+    // hurdles
+    const hurdleImgs = ['hurdle1.jpg', 'hurdle2.jpg'].map(src => {
+      const img = new Image();
+      img.src = src;
+      return img;
+    });
+
+    // sounds
+    const bgm = new Audio('bgm.mp3');
+    const hitSound = new Audio('hit.mp3');
+    const winSound = new Audio('win.mp3');
+    bgm.loop = true;
+    bgm.volume = 0.5;
+
+    // game objects
+    const player = { x: 50, y: 350, width: 100, height: 100, speed: 6, jumping: false, vy: 0 };
+    const gravity = 0.5;
+    let obstacles = [];
+    let frame = 0;
+    let hurdlesPassed = 0;
+    let gameOver = false;
+    let gameWon = false;
+    let goalX = 9000;
+
+    function createObstacle() {
+      const img = hurdleImgs[Math.floor(Math.random() * hurdleImgs.length)];
+      const obs = { x: canvas.width, y: 370, width: 70, height: 70, img };
+      obstacles.push(obs);
+    }
+
+    function drawBackground() {
+      ctx.drawImage(bgImgs[currentBg], 0, 0, canvas.width, canvas.height);
+      if (frame % 600 === 0) currentBg = (currentBg + 1) % bgImgs.length;
+    }
+
+    function drawPlayer() {
+      ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+    }
+
+    function drawObstacles() {
+      obstacles.forEach(obs => ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height));
+    }
+
+    function drawGoal() {
+      if (hurdlesPassed >= 15) {
+        ctx.drawImage(goalImg, goalX, 340, 100, 120);
+      }
+    }
+
+    function update() {
+      if (gameOver || gameWon) return;
+
+      frame++;
+      drawBackground();
+
+      if (frame % 120 === 0 && hurdlesPassed < 15) createObstacle();
+
+      // player gravity
+      if (player.jumping) {
+        player.vy += gravity;
+        player.y += player.vy;
+        if (player.y >= 350) {
+          player.y = 350;
+          player.jumping = false;
+          player.vy = 0;
+        }
+      }
+
+      obstacles.forEach((obs, i) => {
+        obs.x -= 6;
+        if (obs.x + obs.width < 0) {
+          obstacles.splice(i, 1);
+          hurdlesPassed++;
+        }
+
+        // collision check
+        if (
+          player.x < obs.x + obs.width &&
+          player.x + player.width > obs.x &&
+          player.y < obs.y + obs.height &&
+          player.y + player.height > obs.y
+        ) {
+          gameOver = true;
+          bgm.pause();
+          hitSound.play();
+        }
+      });
+
+      if (hurdlesPassed >= 15) {
+        goalX -= 6;
+        if (
+          player.x < goalX + 100 &&
+          player.x + player.width > goalX &&
+          player.y < 440 &&
+          player.y + player.height > 340
+        ) {
+          gameWon = true;
+          bgm.pause();
+          winSound.play();
+        }
+      }
+
+      drawObstacles();
+      drawPlayer();
+      drawGoal();
+
+      if (!gameOver && !gameWon) requestAnimationFrame(update);
+      else showResult();
+    }
+
+    function showResult() {
+      ctx.fillStyle = "white";
+      ctx.font = "40px Arial";
+      if (gameWon) ctx.fillText("🎉 Modi met Meloni! You Win!", 230, 250);
+      else ctx.fillText("💥 You hit a hurdle! Game Over!", 200, 250);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space' && !player.jumping && !gameOver && !gameWon) {
+        player.jumping = true;
+        player.vy = -10;
+      }
+    });
+
+    bgm.play();
+    update();
+  </script>
+</body>
+</html>
