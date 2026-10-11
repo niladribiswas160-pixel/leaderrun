@@ -1,517 +1,169 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100d17">
-<meta name="description" content="Usher Sajea Decorators, led by proprietor Gobinda Biswas. Contact us for your decoration requirements in Purba Bardhaman, West Bengal.">
-<title>Usher Sajea Decorators | Beautiful Celebrations</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Chasing Swastika 💋</title>
 <style>
-:root {
-  --bg: #100d17;
-  --panel: #1b1422;
-  --gold: #e9c783;
-  --cream: #fff8ed;
-  --muted: #c4b8ca;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-body {
-  background: var(--bg);
-  color: var(--cream);
-  font-family: "Trebuchet MS", Arial, sans-serif;
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-button, a { -webkit-tap-highlight-color: transparent; }
-::selection { background: var(--gold); color: var(--bg); }
-
-#loader {
-  position: fixed; inset: 0; z-index: 9999;
-  display: grid; place-items: center;
-  background: var(--bg);
-  transition: opacity .7s, visibility .7s;
-}
-#loader.done { opacity: 0; visibility: hidden; }
-.loader-inner { text-align: center; }
-.loader-name { color: var(--gold); letter-spacing: 5px; font-size: 13px; }
-.loader-ring {
-  width: 54px; height: 54px; margin: 22px auto;
-  border: 2px solid #453346; border-top-color: var(--gold);
-  border-radius: 50%; animation: spin 1s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-#particles {
-  position: fixed; inset: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 0; opacity: .65;
-}
-header, main, footer, .whatsapp { position: relative; z-index: 1; }
-
-header {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 20px; padding: 18px 7%;
-  background: rgba(16,13,23,.85);
-  border-bottom: 1px solid rgba(233,199,131,.18);
-  backdrop-filter: blur(18px);
-}
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand-icon {
-  width: 42px; height: 42px; display: grid; place-items: center;
-  border: 1px solid var(--gold); border-radius: 50%;
-  color: var(--gold); font-size: 23px;
-  animation: halo 3s ease-in-out infinite;
-}
-.brand strong { display: block; font-size: 14px; letter-spacing: 1px; }
-.brand small { display: block; color: var(--gold); font-size: 9px; letter-spacing: 3px; margin-top: 4px; }
-nav { display: flex; gap: 26px; align-items: center; }
-nav a { color: var(--muted); font-size: 13px; transition: color .3s; }
-nav a:hover { color: var(--gold); }
-.nav-cta {
-  padding: 11px 17px; border: 1px solid var(--gold);
-  color: var(--gold); border-radius: 3px;
-}
-.menu-toggle {
-  display: none; background: none; color: var(--gold);
-  border: 1px solid #59465b; padding: 8px 12px; font-size: 22px;
-}
-
-.hero {
-  min-height: 88vh; min-height: 88svh;
-  padding: 100px 9% 85px;
-  display: flex; align-items: center; position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 85% 42%, #744b443d, transparent 37%),
-    radial-gradient(ellipse at 75% 80%, #a47a3324, transparent 35%),
-    linear-gradient(125deg, #100d17 20%, #211526 65%, #17101e);
-}
-.hero::before {
-  content: "✳";
-  position: absolute; right: 8%; top: 8%;
-  color: #e9c78315; font-size: clamp(220px, 35vw, 480px);
-  animation: rotateSlow 60s linear infinite;
-}
-.hero::after {
-  content: ""; position: absolute; width: 380px; height: 380px;
-  right: 8%; top: 25%; border: 1px solid #e9c78320;
-  border-radius: 50%; box-shadow: 0 0 80px #d9a74b0b, inset 0 0 80px #d9a74b08;
-  animation: halo 6s ease-in-out infinite;
-}
-.hero-content { max-width: 770px; position: relative; z-index: 2; }
-.eyebrow {
-  color: var(--gold); font-size: 11px; letter-spacing: 4px;
-  display: flex; align-items: center; gap: 12px;
-}
-.eyebrow::before { content: ""; width: 35px; height: 1px; background: var(--gold); }
-.hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(44px, 7.4vw, 91px);
-  font-weight: 400; line-height: 1.08; letter-spacing: -2px;
-  margin: 28px 0;
-  animation: rise 1.1s .1s both;
-}
-.hero h1 em { color: var(--gold); font-weight: 400; }
-.hero p { color: var(--muted); line-height: 1.9; max-width: 530px; font-size: 16px; }
-.hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 35px; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 15px 22px; font-size: 12px; letter-spacing: 1px;
-  transition: transform .3s, background .3s, box-shadow .3s;
-}
-.btn:hover { transform: translateY(-4px); }
-.btn-gold { background: var(--gold); color: #201421; box-shadow: 0 5px 30px #e9c78318; }
-.btn-gold:hover { box-shadow: 0 10px 35px #e9c78335; }
-.btn-outline { border: 1px solid #77627a; color: var(--cream); }
-.btn-outline:hover { border-color: var(--gold); }
-.hero-note {
-  position: absolute; bottom: 30px; right: 7%;
-  writing-mode: vertical-rl; color: #a995a9;
-  letter-spacing: 4px; font-size: 9px;
-}
-.scroll-line { width: 1px; height: 40px; background: var(--gold); margin-top: 40px; animation: stretch 2s infinite; }
-
-.marquee {
-  overflow: hidden; white-space: nowrap; padding: 20px 0;
-  background: var(--gold); color: #201421;
-}
-.marquee-track { display: inline-flex; gap: 35px; animation: marquee 28s linear infinite; }
-.marquee span { font-family: Georgia, serif; font-size: 16px; letter-spacing: 2px; }
-.marquee .star { font-size: 22px; }
-
-.section { padding: 100px 8%; }
-.section-head { text-align: center; max-width: 700px; margin: 0 auto 55px; }
-.kicker { color: var(--gold); letter-spacing: 4px; font-size: 10px; }
-.section h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 5vw, 55px); font-weight: 400; margin: 18px 0;
-}
-.section-head p { color: var(--muted); line-height: 1.9; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.service {
-  padding: 34px 28px; min-height: 245px;
-  background: linear-gradient(145deg, #211827, #17121e);
-  border: 1px solid #473348; position: relative; overflow: hidden;
-  transition: transform .45s, border-color .45s, box-shadow .45s;
-}
-.service::after {
-  content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transition: left .7s;
-}
-.service:hover { transform: translateY(-9px); border-color: #b99a61; box-shadow: 0 20px 55px #0003; }
-.service:hover::after { left: 100%; }
-.service-icon { font-size: 33px; color: var(--gold); margin-bottom: 25px; }
-.service h3 { font-family: Georgia, serif; font-size: 23px; font-weight: 400; margin-bottom: 12px; }
-.service p { color: var(--muted); font-size: 13px; line-height: 1.9; }
-
-.story {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
-  background: #18121f;
-}
-.story-art {
-  min-height: 390px; position: relative; display: grid; place-items: center;
-  background: radial-gradient(ellipse, #79543a48, transparent 62%), #201727;
-  border: 1px solid #59412f; overflow: hidden;
-}
-.story-art::before, .story-art::after {
-  content: ""; position: absolute; border: 1px solid #e9c78355; border-radius: 50%;
-  width: 75%; aspect-ratio: 1; animation: halo 5s ease-in-out infinite;
-}
-.story-art::after { width: 55%; animation-delay: -2.5s; }
-.story-flower { font-size: clamp(100px, 15vw, 175px); color: var(--gold); z-index: 1; animation: float 5s ease-in-out infinite; text-shadow: 0 0 50px #e9c78335; }
-.story-copy p { color: var(--muted); line-height: 2; margin: 18px 0; }
-.owner { color: var(--gold); font-family: Georgia, serif; font-size: 22px; margin-top: 25px; }
-
-.gallery-note {
-  max-width: 850px; margin: auto; padding: 50px 25px; text-align: center;
-  border: 1px dashed #6a5366; background: #1a1420;
-}
-.gallery-note .camera { font-size: 38px; margin-bottom: 15px; color: var(--gold); }
-.gallery-note p { color: var(--muted); line-height: 1.9; }
-
-.contact-panel {
-  max-width: 1000px; margin: auto; padding: 55px;
-  background: radial-gradient(ellipse at top right, #75513230, transparent 55%), #1b1422;
-  border: 1px solid #59412f;
-}
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 35px 0; }
-.contact-item { padding: 20px; border-bottom: 1px solid #49364a; overflow-wrap: anywhere; }
-.contact-item small { display: block; color: var(--gold); letter-spacing: 2px; font-size: 10px; margin-bottom: 10px; }
-.contact-item p, .contact-item a { font-size: 14px; line-height: 1.8; }
-.contact-item a:hover { color: var(--gold); }
-.contact-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-
-footer { border-top: 1px solid #352638; padding: 30px 7%; text-align: center; color: var(--muted); font-size: 12px; line-height: 2; }
-footer strong { color: var(--gold); }
-
-.whatsapp {
-  position: fixed; bottom: 22px; right: 22px; z-index: 90;
-  width: 58px; height: 58px; border-radius: 50%;
-  background: #25d366; color: white; display: grid; place-items: center;
-  box-shadow: 0 0 0 0 #25d36655;
-  animation: waPulse 2.4s infinite;
-}
-.whatsapp svg { width: 28px; height: 28px; fill: currentColor; }
-
-.reveal { opacity: 0; transform: translateY(35px); transition: opacity .8s, transform .8s; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.delay-1 { transition-delay: .12s; }
-.delay-2 { transition-delay: .24s; }
-
-@keyframes rise { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-17px) rotate(4deg); } }
-@keyframes halo { 0%,100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.06); opacity: 1; } }
-@keyframes rotateSlow { to { transform: rotate(360deg); } }
-@keyframes marquee { to { transform: translateX(-50%); } }
-@keyframes stretch { 0%,100% { transform: scaleY(.5); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
-@keyframes waPulse { 0% { box-shadow: 0 0 0 0 #25d36655; } 70% { box-shadow: 0 0 0 15px #25d36600; } 100% { box-shadow: 0 0 0 0 #25d36600; } }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-@media (max-width: 800px) {
-  header { padding: 14px 5%; }
-  .brand strong { font-size: 11px; }
-  .brand small { font-size: 8px; letter-spacing: 2px; }
-  .menu-toggle { display: block; }
-  nav {
-    display: none; position: absolute; top: 100%; left: 0; right: 0;
-    padding: 25px 7%; background: #15101d; border-bottom: 1px solid #59412f;
-    flex-direction: column; align-items: stretch; gap: 22px;
-  }
-  nav.open { display: flex; }
-  nav a { font-size: 15px; }
-  .hero { min-height: 78vh; padding: 85px 7%; }
-  .hero::after { right: -35%; top: 35%; }
-  .hero-note { display: none; }
-  .section { padding: 75px 6%; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service { min-height: auto; }
-  .story { grid-template-columns: 1fr; gap: 38px; }
-  .story-art { min-height: 280px; }
-  .contact-panel { padding: 30px 20px; }
-  .contact-grid { grid-template-columns: 1fr; gap: 5px; }
-}
+:root{--pink:#ff4f9a;--gold:#ffd98a;--ink:#160f24}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#130f20;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif;touch-action:none}
+canvas{display:block;width:100vw;height:100dvh}
+#hud{position:fixed;inset:0;pointer-events:none;padding:clamp(10px,2vw,22px);display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.pill{background:#170f27d9;border:1px solid #ffffff28;backdrop-filter:blur(10px);border-radius:16px;padding:9px 13px;box-shadow:0 8px 25px #0003}
+.brand{font-weight:900;letter-spacing:.04em;font-size:clamp(13px,2.2vw,19px)}.brand span{color:#ff83bb}
+.stats{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.stat{min-width:78px;text-align:center;font-size:11px;color:#d7cadd}.stat b{display:block;font-size:clamp(17px,3vw,24px);color:#fff}
+#progressWrap{width:min(310px,52vw);margin-top:8px;height:7px;border-radius:20px;background:#ffffff25;overflow:hidden}#progress{height:100%;width:0;background:linear-gradient(90deg,#ff4f9a,#ffd98a);border-radius:20px;transition:width .2s}
+.bottom{display:flex;align-items:end;justify-content:space-between;gap:10px}.hint{font-size:12px;color:#fffbd5;max-width:55%;text-shadow:0 2px 6px #000}
+.controls{display:flex;gap:9px;pointer-events:auto}.ctrl{width:clamp(48px,10vw,66px);height:clamp(48px,10vw,66px);border-radius:19px;border:1px solid #ffffff50;background:#21132fc9;color:#fff;font-size:24px;font-weight:800;box-shadow:0 7px 18px #0004;touch-action:none}.ctrl:active{transform:scale(.94);background:#8f326e}
+#overlay{position:fixed;inset:0;display:grid;place-items:center;padding:18px;background:linear-gradient(135deg,#120d22dc,#32162fdc);backdrop-filter:blur(8px);z-index:5}
+.panel{width:min(540px,100%);max-height:92dvh;overflow:auto;border:1px solid #ffffff2d;border-radius:28px;padding:clamp(22px,5vw,42px);background:linear-gradient(145deg,#281633f5,#171126f5);box-shadow:0 30px 100px #0008;text-align:center}
+.kicker{color:#ff9bc8;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+h1{font-size:clamp(32px,8vw,58px);line-height:1.02;margin:12px 0 14px;letter-spacing:-.05em}h1 em{font-style:normal;color:#ff83bb}
+p{line-height:1.6;color:#e6d8e9}.primary{border:0;border-radius:15px;padding:14px 22px;background:linear-gradient(100deg,#ff4f9a,#ff8aaf);color:#250e22;font-weight:900;font-size:16px;box-shadow:0 8px 25px #ff4f9a35;cursor:pointer;margin:6px}
+.secondary{border:1px solid #ffffff30;border-radius:14px;padding:12px 16px;background:#ffffff0d;color:white;font-weight:700;cursor:pointer;margin:5px}
+.small{font-size:12px;color:#bca9c8}.photo-row{display:flex;justify-content:center;gap:18px;margin:20px 0}.avatar{width:90px;height:90px;border-radius:50%;border:2px solid #ff8fc0;background:linear-gradient(145deg,#61345f,#292342);display:grid;place-items:center;font-size:38px;overflow:hidden;box-shadow:0 0 30px #ff4f9a22}.avatar img{width:100%;height:100%;object-fit:cover}
+#letter{white-space:pre-line;text-align:left;background:#fff7f0;color:#522c46;border-radius:16px;padding:20px;line-height:1.75;margin:18px 0}
+.hidden{display:none!important}
+@media(max-width:520px){.stat{min-width:61px;padding:7px}.hint{font-size:10px}.brand{max-width:43vw}.photo-row{margin:12px 0}.avatar{width:72px;height:72px}}
 </style>
 </head>
-
 <body>
-<div id="loader">
-  <div class="loader-inner">
-    <div class="loader-name">USHER SAJEA</div>
-    <div class="loader-ring"></div>
-    <p style="color:#c4b8ca;font-size:11px;letter-spacing:3px">DECORATORS</p>
+<canvas id="game"></canvas>
+<div id="hud" class="hidden">
+  <div class="top">
+    <div>
+      <div class="pill brand">💗 CHASING <span>SWASTIKA</span></div>
+      <div id="progressWrap"><div id="progress"></div></div>
+    </div>
+    <div class="stats">
+      <div class="pill stat">💋 KISSES<b id="kissCount">0</b></div>
+      <div class="pill stat">⚡ SPEED<b id="speed">1.0x</b></div>
+      <div class="pill stat">🏙️ DISTANCE<b id="distance">0m</b></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="hint" id="hint">← → change lanes · ↑ jump · ↓ slide</div>
+    <div class="controls">
+      <button class="ctrl" data-act="left" aria-label="Move left">‹</button>
+      <button class="ctrl" data-act="jump" aria-label="Jump">↑</button>
+      <button class="ctrl" data-act="right" aria-label="Move right">›</button>
+    </div>
   </div>
 </div>
-
-<canvas id="particles" aria-hidden="true"></canvas>
-
-<header>
-  <a class="brand" href="#home" aria-label="Usher Sajea Decorators home">
-    <span class="brand-icon">✳</span>
-    <span>
-      <strong>USHER SAJEA DECORATORS</strong>
-      <small>ARTISTRY · ELEGANCE · CELEBRATION</small>
-    </span>
-  </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About Us</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact" class="nav-cta">Contact Us ↗</a>
-  </nav>
-</header>
-
-<main>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">THE ART OF CELEBRATION</div>
-      <h1>We turn moments into <em>memories.</em></h1>
-      <p>
-        Beautiful spaces. Thoughtful details. Extraordinary celebrations.
-        Let Usher Sajea Decorators help you bring your decoration ideas to life.
-      </p>
-      <div class="hero-buttons">
-        <a class="btn btn-gold" href="#contact">DISCUSS YOUR EVENT ↗</a>
-        <a class="btn btn-outline" href="#services">DISCOVER OUR SERVICES</a>
-      </div>
-      <div class="scroll-line"></div>
+<div id="overlay">
+  <div class="panel" id="startPanel">
+    <div class="kicker">A tiny city adventure for two</div>
+    <div class="photo-row">
+      <div><div class="avatar" id="youAvatar">🧑🏻‍🦱</div><div class="small">YOU · THE CHASER</div></div>
+      <div><div class="avatar" id="herAvatar">👩🏻‍🦰</div><div class="small">SWASTIKA · THE RUNNER</div></div>
     </div>
-    <div class="hero-note">MADE FOR YOUR SPECIAL MOMENTS</div>
-  </section>
-
-  <div class="marquee" aria-label="Beautiful decorations for special celebrations">
-    <div class="marquee-track">
-      <span>ELEGANT DECOR</span><span class="star">✳</span>
-      <span>UNFORGETTABLE CELEBRATIONS</span><span class="star">✳</span>
-      <span>BEAUTIFUL MOMENTS</span><span class="star">✳</span>
-      <span>CREATIVE DETAILS</span><span class="star">✳</span>
-      <span>ELEGANT DECOR</span><span class="star">✳</span>
-      <span>UNFORGETTABLE CELEBRATIONS</span><span class="star">✳</span>
-      <span>BEAUTIFUL MOMENTS</span><span class="star">✳</span>
-      <span>CREATIVE DETAILS</span><span class="star">✳</span>
-    </div>
+    <h1>Chasing <em>Swastika</em> 💋</h1>
+    <p>Run through the city, collect kiss tokens, and dodge the little things that get between two people.</p>
+    <p><b>143 kisses</b> unlocks your first milestone. <b>1,000 kisses</b> brings the final letter.</p>
+    <button class="primary" id="startBtn">START OUR RUN ♥</button>
+    <div><button class="secondary" id="photoBtn">Add our photos</button></div>
+    <p class="small">Desktop: ← → or A/D, ↑/W to jump, ↓/S to slide. Mobile: swipe or use buttons.</p>
   </div>
-
-  <section class="section" id="services">
-    <div class="section-head reveal">
-      <div class="kicker">WHAT WE DO</div>
-      <h2>Every detail matters.</h2>
-      <p>Tell us about your occasion and your ideas. We'll discuss the decoration that best suits your event.</p>
-    </div>
-
-    <div class="services-grid">
-      <article class="service reveal">
-        <div class="service-icon">✿</div>
-        <h3>Wedding Decoration</h3>
-        <p>Thoughtful decorative concepts for a day you will always remember.</p>
-      </article>
-      <article class="service reveal delay-1">
-        <div class="service-icon">❋</div>
-        <h3>Stage & Venue Décor</h3>
-        <p>Make your event space feel special with carefully planned decoration.</p>
-      </article>
-      <article class="service reveal delay-2">
-        <div class="service-icon">✧</div>
-        <h3>Special Occasions</h3>
-        <p>Decoration ideas for celebrations, family gatherings and memorable events.</p>
-      </article>
-    </div>
-    <p style="text-align:center;color:#a995a9;font-size:11px;margin-top:25px">
-      Services can be updated to match the exact work your business offers.
-    </p>
-  </section>
-
-  <section class="section story" id="about">
-    <div class="story-art reveal" aria-hidden="true">
-      <div class="story-flower">❋</div>
-    </div>
-    <div class="story-copy reveal delay-1">
-      <div class="kicker">OUR STORY</div>
-      <h2>Creating beauty, one celebration at a time.</h2>
-      <p>
-        At Usher Sajea Decorators, we believe that every special occasion
-        deserves care, creativity and attention to detail.
-      </p>
-      <p>
-        Led by proprietor Gobinda Biswas, we welcome enquiries about
-        decoration requirements in Purba Bardhaman and surrounding areas.
-      </p>
-      <div class="owner">Gobinda Biswas</div>
-      <p style="font-size:11px;color:#e9c783;letter-spacing:2px">PROPRIETOR</p>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <div class="section-head reveal">
-      <div class="kicker">A GLIMPSE OF OUR WORK</div>
-      <h2>Moments worth remembering.</h2>
-      <p>Our decoration gallery will feature real event photographs soon.</p>
-    </div>
-    <div class="gallery-note reveal">
-      <div class="camera">✧</div>
-      <h3 style="font-family:Georgia,serif;font-size:25px;font-weight:400;margin-bottom:12px">Our gallery is getting ready.</h3>
-      <p>Real wedding, stage and event decoration photographs will be added here in the next update.</p>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="contact-panel reveal">
-      <div class="kicker">LET'S CONNECT</div>
-      <h2>Have a celebration in mind?</h2>
-      <p style="color:#c4b8ca;line-height:1.9">
-        Contact us to discuss your event, decoration ideas and requirements.
-      </p>
-
-      <div class="contact-grid">
-        <div class="contact-item">
-          <small>PROPRIETOR</small>
-          <p>Gobinda Biswas</p>
-        </div>
-        <div class="contact-item">
-          <small>PHONE NUMBER 01</small>
-          <a href="tel:+918967208093">+91 89672 08093</a>
-        </div>
-        <div class="contact-item">
-          <small>PHONE NUMBER 02</small>
-          <a href="tel:+918250812836">+91 82508 12836</a>
-        </div>
-        <div class="contact-item">
-          <small>EMAIL</small>
-          <a href="mailto:niladrisekharbiswa272@gmail.com">niladrisekharbiswa272@gmail.com</a>
-        </div>
-        <div class="contact-item" style="grid-column:1/-1">
-          <small>OUR LOCATION</small>
-          <p>DVC More, Malancha, Kanainathshal,<br>Purba Bardhaman, West Bengal – 713103</p>
-        </div>
-      </div>
-
-      <div class="contact-actions">
-        <a class="btn btn-gold" href="https://wa.me/918967208093" target="_blank" rel="noopener noreferrer">WHATSAPP US ↗</a>
-        <a class="btn btn-outline" href="tel:+918967208093">CALL US</a>
-        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=DVC+More+Malancha+Kanainathshal+Purba+Bardhaman+713103" target="_blank" rel="noopener noreferrer">FIND OUR AREA ↗</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p><strong>USHER SAJEA DECORATORS</strong></p>
-  <p>Proprietor: Gobinda Biswas</p>
-  <p>© <span id="year"></span> Usher Sajea Decorators. All rights reserved.</p>
-</footer>
-
-<a class="whatsapp" href="https://wa.me/918967208093"
-   target="_blank" rel="noopener noreferrer" aria-label="Contact Usher Sajea Decorators on WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.8 11.8 0 0 0 5.7 1.5h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.5ZM12.1 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.3c0-5.4 4.5-9.9 10-9.9a9.8 9.8 0 0 1 7 2.9 9.8 9.8 0 0 1 2.9 7c0 5.5-4.5 10-9.9 10Zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.5c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/>
-  </svg>
-</a>
-
+  <div class="panel hidden" id="endPanel">
+    <div class="kicker" id="endKicker">A milestone reached</div><h1 id="endTitle">143 <em>kisses!</em></h1>
+    <p id="endText"></p>
+    <div id="letter" class="hidden"></div>
+    <button class="primary" id="continueBtn">KEEP CHASING ♥</button>
+    <button class="secondary" id="restartBtn">START OVER</button>
+  </div>
+</div>
+<input id="photoInput" type="file" accept="image/*" multiple class="hidden">
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-window.addEventListener("load", () => {
-  setTimeout(() => document.getElementById("loader").classList.add("done"), 700);
-});
-
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
-
-menuToggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.textContent = open ? "✕" : "☰";
-});
-
-nav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "☰";
-  });
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-let particles = [];
-let width = 0, height = 0;
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width * dpr;
-  canvas.height = height * dpr;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = reduceMotion ? 0 : Math.min(55, Math.floor(width / 24));
-  particles = Array.from({length: count}, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    r: Math.random() * 1.7 + .5,
-    speed: Math.random() * .32 + .08,
-    drift: (Math.random() - .5) * .25,
-    alpha: Math.random() * .55 + .2
-  }));
+(() => {
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d');
+const $=id=>document.getElementById(id);
+let W=innerWidth,H=innerHeight,dpr=1;
+function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+addEventListener('resize',resize);resize();
+let state='menu',last=0,time=0,kisses=0,distance=0,speed=1,baseSpeed=1,playerLane=1,targetLane=1,jump=0,slide=0,invuln=0,hitFlash=0;
+let objects=[],particles=[],roadOffset=0,spawnTimer=0,milestone143=false,photoYou=null,photoHer=null,herX=0;
+const laneX=(lane,depth)=>W/2+(lane-1)*roadHalf(depth)*.72;
+function horizon(){return H*.31}
+function roadHalf(depth){return W*(.075+.43*depth)}
+function project(lane,depth){let y=horizon()+depth*(H-horizon());return {x:W/2+(lane-1)*roadHalf(depth)*.72,y,scale:.16+depth*1.15}}
+function roundedRect(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function drawBackground(dt){
+ const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#51436f');sky.addColorStop(.48,'#f6a6a8');sky.addColorStop(1,'#f7c99c');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+ // sunset
+ ctx.fillStyle='#ffe4ae';ctx.beginPath();ctx.arc(W*.76,H*.20,Math.min(W,H)*.075,0,Math.PI*2);ctx.fill();
+ // skyline
+ const hz=horizon();ctx.fillStyle='#44344f';
+ for(let i=0;i<15;i++){let bw=W/13, x=i*bw-(roadOffset*.2%(bw));let bh=H*(.08+((i*37)%9)/100);ctx.fillRect(x,hz-bh,bw*.8,bh);ctx.fillStyle=i%2?'#5e4560':'#44344f';}
+ // roadside lamps/buildings perspective
+ for(let i=0;i<9;i++){let d=((i/8+roadOffset*.11)%1);let y=hz+d*(H-hz);let s=.12+d*.9;for(let side of [-1,1]){let x=W/2+side*(roadHalf(d)*1.23+22*s);ctx.fillStyle='#48354f';ctx.fillRect(x-7*s,y-58*s,14*s,58*s);ctx.fillStyle='#ffefbd';ctx.beginPath();ctx.arc(x,y-58*s,5*s,0,Math.PI*2);ctx.fill();}}
+ // road
+ ctx.fillStyle='#393542';ctx.beginPath();ctx.moveTo(W/2-W*.08,hz);ctx.lineTo(W/2+W*.08,hz);ctx.lineTo(W*1.15,H);ctx.lineTo(-W*.15,H);ctx.closePath();ctx.fill();
+ // road edges
+ ctx.strokeStyle='#f6d9a1';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(W/2-W*.08,hz);ctx.lineTo(-W*.15,H);ctx.moveTo(W/2+W*.08,hz);ctx.lineTo(W*1.15,H);ctx.stroke();
+ // lane dashes
+ for(let i=0;i<12;i++){let d=((i/12+roadOffset*.65)%1);let y=hz+d*(H-hz),half=roadHalf(d),dashH=4+d*35;ctx.strokeStyle='#ffffff9c';ctx.lineWidth=1+d*4;ctx.beginPath();ctx.moveTo(W/2-half*.24,y);ctx.lineTo(W/2-half*.24,y+dashH);ctx.moveTo(W/2+half*.24,y);ctx.lineTo(W/2+half*.24,y+dashH);ctx.stroke();}
+ // distant cars
+ for(let i=0;i<3;i++){let d=((i*.33+roadOffset*.09)%1);let p=project(i%3,d);ctx.fillStyle=['#d65b76','#4a92b7','#e7c16c'][i];roundedRect(p.x-8*p.scale,p.y-20*p.scale,16*p.scale,23*p.scale,3*p.scale);}
 }
-
-function drawParticles() {
-  ctx.clearRect(0, 0, width, height);
-  particles.forEach(p => {
-    p.y -= p.speed;
-    p.x += p.drift;
-    if (p.y < -5) { p.y = height + 5; p.x = Math.random() * width; }
-    if (p.x < 0) p.x = width;
-    if (p.x > width) p.x = 0;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(233,199,131,${p.alpha})`;
-    ctx.fill();
-  });
-  if (!reduceMotion) requestAnimationFrame(drawParticles);
+function drawPerson(x,y,scale,photo,isHer=false){
+ ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);
+ // shadow
+ ctx.fillStyle='#17101c55';ctx.beginPath();ctx.ellipse(0,3,20,7,0,0,Math.PI*2);ctx.fill();
+ // photo cutout framed in a rounded circle; fallback character is drawn if no photo
+ if(photo){ctx.save();ctx.beginPath();ctx.arc(0,-34,20,0,Math.PI*2);ctx.clip();ctx.drawImage(photo,-20,-54,40,40);ctx.restore();ctx.strokeStyle='#ffb2d5';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,-34,20,0,Math.PI*2);ctx.stroke();}
+ else {ctx.fillStyle=isHer?'#ffc6a8':'#d9a47f';ctx.beginPath();ctx.arc(0,-34,14,0,Math.PI*2);ctx.fill();ctx.fillStyle=isHer?'#4a2538':'#29243b';ctx.beginPath();ctx.arc(0,-39,14,Math.PI,Math.PI*2);ctx.fill();}
+ ctx.fillStyle=isHer?'#f05d9b':'#56a5d8';roundedRect(-14,-20,28,28,9);
+ ctx.strokeStyle=isHer?'#f8c0dc':'#e2f2ff';ctx.lineWidth=6;ctx.lineCap='round';
+ let swing=Math.sin(time*12+(isHer?1:0))*7;
+ ctx.beginPath();ctx.moveTo(-10,-12);ctx.lineTo(-17+swing,-2);ctx.moveTo(10,-12);ctx.lineTo(17-swing,-2);ctx.stroke();
+ ctx.strokeStyle='#292137';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(-7,5);ctx.lineTo(-9+swing*.3,20);ctx.moveTo(7,5);ctx.lineTo(9-swing*.3,20);ctx.stroke();
+ if(isHer){ctx.fillStyle='#ff5c9d';ctx.font='15px sans-serif';ctx.fillText('♥',12,-43);}
+ ctx.restore();
 }
-resizeCanvas();
-if (!reduceMotion) drawParticles();
-window.addEventListener("resize", resizeCanvas);
+function drawObject(o){const p=project(o.lane,o.depth),s=p.scale;ctx.save();ctx.translate(p.x,p.y);
+ if(o.type==='kiss'){ctx.font=`${Math.round(24*s)}px sans-serif`;ctx.textAlign='center';ctx.fillText('💋',0,-25*s);ctx.shadowColor='#ff4f9a';ctx.shadowBlur=12*s;ctx.fillStyle='#ff8fc0';ctx.beginPath();ctx.arc(0,-25*s,12*s,0,Math.PI*2);ctx.strokeStyle='#ffb6d5';ctx.stroke();}
+ else {ctx.font=`${Math.round(31*s)}px sans-serif`;ctx.textAlign='center';ctx.fillText(o.type==='ego'?'😤':'💢',0,-17*s);ctx.fillStyle='#ff6c7e88';roundedRect(-15*s,-8*s,30*s,8*s,4*s);}
+ ctx.restore();}
+function spawn(){let lane=Math.floor(Math.random()*3),type=Math.random()<.69?'kiss':(Math.random()<.5?'ego':'clash');objects.push({lane,depth:0,type,id:Math.random()});}
+function burst(x,y,emoji){for(let i=0;i<12;i++)particles.push({x,y,vx:(Math.random()-.5)*180,vy:-50-Math.random()*150,life:.7+Math.random()*.5,emoji});}
+function drawParticles(dt){particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=180*dt;p.life-=dt;ctx.globalAlpha=Math.max(0,Math.min(1,p.life));ctx.font='20px sans-serif';ctx.fillText(p.emoji,p.x,p.y)});ctx.globalAlpha=1;particles=particles.filter(p=>p.life>0)}
+function update(dt){
+ if(state!=='running')return;
+ time+=dt;distance+=dt*speed*9;speed=Math.min(2.35,baseSpeed+distance/1800);
+ roadOffset+=dt*speed;spawnTimer-=dt;
+ if(spawnTimer<=0){spawn();spawnTimer=Math.max(.28,.78-distance/6500)*(0.75+Math.random()*.6);}
+ targetLane=Math.max(0,Math.min(2,targetLane));playerLane+=(targetLane-playerLane)*Math.min(1,dt*12);
+ jump=Math.max(0,jump-dt*1.6);slide=Math.max(0,slide-dt);invuln=Math.max(0,invuln-dt);hitFlash=Math.max(0,hitFlash-dt);
+ objects.forEach(o=>{o.depth+=dt*(.31+speed*.13);if(o.depth>.83&&!o.done&&o.lane===Math.round(playerLane)){o.done=true;if(o.type==='kiss'){kisses++;burst(W/2+(o.lane-1)*W*.16,H*.72,'💗');if(kisses>=143&&!milestone143){milestone143=true;showMilestone();}}else if(invuln<=0){speed=Math.max(.38,speed*.5);invuln=1.15;hitFlash=.35;burst(W/2+(o.lane-1)*W*.16,H*.75,'💢');$('hint').textContent='Ouch! Ego slowed you down — keep going 💗';}}});
+ objects=objects.filter(o=>o.depth<1.08&&!o.done);
+ $('kissCount').textContent=kisses;$('speed').textContent=speed.toFixed(1)+'x';$('distance').textContent=Math.floor(distance)+'m';$('progress').style.width=Math.min(100,kisses/1000*100)+'%';
+ if(kisses>=1000)winGame();
+}
+function render(dt){drawBackground(dt);objects.forEach(drawObject);
+ let py=H*.80-(jump>0?Math.sin((1-jump)*Math.PI/1.6)*H*.14:0);
+ if(hitFlash>0){ctx.fillStyle='#ff334422';ctx.fillRect(0,0,W,H);}
+ // Swastika ahead
+ drawPerson(W/2+(1-1)*W*.12,H*.61,Math.min(W,H)/440,photoHer,true);
+ drawPerson(W/2+(playerLane-1)*W*.19,py,Math.min(W,H)/360,photoYou,false);
+ drawParticles(dt);
+}
+function loop(now){let dt=Math.min(.035,(now-last)/1000||0);last=now;if(state==='running')update(dt);render(dt);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+function action(a){if(state!=='running')return;if(a==='left')targetLane--;if(a==='right')targetLane++;if(a==='jump')jump=1;if(a==='slide')slide=.65;targetLane=Math.max(0,Math.min(2,targetLane));}
+document.querySelectorAll('[data-act]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();action(b.dataset.act)})});
+let touchX=0,touchY=0;canvas.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;touchY=e.changedTouches[0].clientY},{passive:true});
+canvas.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.abs(dx)>25)action(dx<0?'left':'right');else if(Math.abs(dy)>25)action(dy<0?'jump':'slide')},{passive:true});
+addEventListener('keydown',e=>{if(['ArrowLeft','a','A'].includes(e.key))action('left');if(['ArrowRight','d','D'].includes(e.key))action('right');if(['ArrowUp','w','W',' '].includes(e.key))action('jump');if(['ArrowDown','s','S'].includes(e.key))action('slide');});
+function start(){state='running';kisses=0;distance=0;speed=1;baseSpeed=1;playerLane=1;targetLane=1;objects=[];particles=[];spawnTimer=.4;milestone143=false;$('overlay').classList.add('hidden');$('hud').classList.remove('hidden');$('hint').textContent='← → change lanes · ↑ jump · ↓ slide';}
+function showMilestone(){state='milestone';$('overlay').classList.remove('hidden');$('startPanel').classList.add('hidden');$('endPanel').classList.remove('hidden');$('endKicker').textContent='A little milestone';$('endTitle').innerHTML='143 <em>kisses!</em>'; $('endText').textContent='143 kisses collected! The city is still ahead, and so is the sweetest part of this chase.';$('letter').classList.add('hidden');$('continueBtn').textContent='KEEP CHASING ♥';}
+function winGame(){if(state!=='running')return;state='won';$('overlay').classList.remove('hidden');$('startPanel').classList.add('hidden');$('endPanel').classList.remove('hidden');$('endKicker').textContent='You made it';$('endTitle').innerHTML='1,000 <em>kisses!</em>';$('endText').textContent='Every little misunderstanding, every turn, every step — you kept choosing the chase. Here is your letter.';$('letter').textContent='Dear Swastika,\\n\\nIf I could turn every silly argument into a kiss, every moment of distance into a step closer, and every ordinary city road into an adventure with you, I would.\\n\\nThis little game is my way of saying that even when the road gets messy, I still want to find my way to you — with patience, laughter, and a heart full of love.\\n\\n143 was a milestone. 1,000 was the challenge. But the best part was always you.\\n\\nYours,\\nYour favourite chaser 💗';$('letter').classList.remove('hidden');$('continueBtn').textContent='PLAY AGAIN ♥';}
+$('startBtn').addEventListener('click',start);
+$('continueBtn').addEventListener('click',()=>{if(state==='milestone'){state='running';$('overlay').classList.add('hidden')}else start()});
+$('restartBtn').addEventListener('click',()=>{ $('endPanel').classList.add('hidden');$('startPanel').classList.remove('hidden');state='menu';kisses=0;distance=0;speed=1;$('hud').classList.add('hidden');$('overlay').classList.remove('hidden')});
+$('photoBtn').addEventListener('click',()=>$('photoInput').click());
+$('photoInput').addEventListener('change',e=>{const files=[...e.target.files];files.forEach(file=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{if(!photoYou){photoYou=img;$('youAvatar').innerHTML='';$('youAvatar').appendChild(img.cloneNode())}else if(!photoHer){photoHer=img;$('herAvatar').innerHTML='';$('herAvatar').appendChild(img.cloneNode())}};img.src=url;});});
+})();
 </script>
 </body>
 </html>
