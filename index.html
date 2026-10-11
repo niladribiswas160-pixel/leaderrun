@@ -1,67 +1,517 @@
-<title>Usher Sajea Decorators | Event Decoration</title>
-<div class="logo">USHER SAJEA DECORATORS</div>
-<section class="hero" id="home">
-  <small>WELCOME TO USHER SAJEA DECORATORS</small>
 
-  <h1>Making Every Celebration Special.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d17">
+<meta name="description" content="Usher Sajea Decorators, led by proprietor Gobinda Biswas. Contact us for your decoration requirements in Purba Bardhaman, West Bengal.">
+<title>Usher Sajea Decorators | Beautiful Celebrations</title>
 
-  <p>
-    Usher Sajea Decorators brings creativity and elegance
-    to your special occasions. Contact us to discuss your
-    decoration requirements.
-  </p>
+<style>
+:root {
+  --bg: #100d17;
+  --panel: #1b1422;
+  --gold: #e9c783;
+  --cream: #fff8ed;
+  --muted: #c4b8ca;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--gold); color: var(--bg); }
 
-  <a class="button" href="#services">Explore Our Services</a>
-</section>
-<section class="about" id="about">
-  <div class="section-heading">
-    <h2>About Us</h2>
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  display: grid; place-items: center;
+  background: var(--bg);
+  transition: opacity .7s, visibility .7s;
+}
+#loader.done { opacity: 0; visibility: hidden; }
+.loader-inner { text-align: center; }
+.loader-name { color: var(--gold); letter-spacing: 5px; font-size: 13px; }
+.loader-ring {
+  width: 54px; height: 54px; margin: 22px auto;
+  border: 2px solid #453346; border-top-color: var(--gold);
+  border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#particles {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; opacity: .65;
+}
+header, main, footer, .whatsapp { position: relative; z-index: 1; }
+
+header {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; padding: 18px 7%;
+  background: rgba(16,13,23,.85);
+  border-bottom: 1px solid rgba(233,199,131,.18);
+  backdrop-filter: blur(18px);
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-icon {
+  width: 42px; height: 42px; display: grid; place-items: center;
+  border: 1px solid var(--gold); border-radius: 50%;
+  color: var(--gold); font-size: 23px;
+  animation: halo 3s ease-in-out infinite;
+}
+.brand strong { display: block; font-size: 14px; letter-spacing: 1px; }
+.brand small { display: block; color: var(--gold); font-size: 9px; letter-spacing: 3px; margin-top: 4px; }
+nav { display: flex; gap: 26px; align-items: center; }
+nav a { color: var(--muted); font-size: 13px; transition: color .3s; }
+nav a:hover { color: var(--gold); }
+.nav-cta {
+  padding: 11px 17px; border: 1px solid var(--gold);
+  color: var(--gold); border-radius: 3px;
+}
+.menu-toggle {
+  display: none; background: none; color: var(--gold);
+  border: 1px solid #59465b; padding: 8px 12px; font-size: 22px;
+}
+
+.hero {
+  min-height: 88vh; min-height: 88svh;
+  padding: 100px 9% 85px;
+  display: flex; align-items: center; position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 42%, #744b443d, transparent 37%),
+    radial-gradient(ellipse at 75% 80%, #a47a3324, transparent 35%),
+    linear-gradient(125deg, #100d17 20%, #211526 65%, #17101e);
+}
+.hero::before {
+  content: "✳";
+  position: absolute; right: 8%; top: 8%;
+  color: #e9c78315; font-size: clamp(220px, 35vw, 480px);
+  animation: rotateSlow 60s linear infinite;
+}
+.hero::after {
+  content: ""; position: absolute; width: 380px; height: 380px;
+  right: 8%; top: 25%; border: 1px solid #e9c78320;
+  border-radius: 50%; box-shadow: 0 0 80px #d9a74b0b, inset 0 0 80px #d9a74b08;
+  animation: halo 6s ease-in-out infinite;
+}
+.hero-content { max-width: 770px; position: relative; z-index: 2; }
+.eyebrow {
+  color: var(--gold); font-size: 11px; letter-spacing: 4px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ""; width: 35px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 7.4vw, 91px);
+  font-weight: 400; line-height: 1.08; letter-spacing: -2px;
+  margin: 28px 0;
+  animation: rise 1.1s .1s both;
+}
+.hero h1 em { color: var(--gold); font-weight: 400; }
+.hero p { color: var(--muted); line-height: 1.9; max-width: 530px; font-size: 16px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 35px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 22px; font-size: 12px; letter-spacing: 1px;
+  transition: transform .3s, background .3s, box-shadow .3s;
+}
+.btn:hover { transform: translateY(-4px); }
+.btn-gold { background: var(--gold); color: #201421; box-shadow: 0 5px 30px #e9c78318; }
+.btn-gold:hover { box-shadow: 0 10px 35px #e9c78335; }
+.btn-outline { border: 1px solid #77627a; color: var(--cream); }
+.btn-outline:hover { border-color: var(--gold); }
+.hero-note {
+  position: absolute; bottom: 30px; right: 7%;
+  writing-mode: vertical-rl; color: #a995a9;
+  letter-spacing: 4px; font-size: 9px;
+}
+.scroll-line { width: 1px; height: 40px; background: var(--gold); margin-top: 40px; animation: stretch 2s infinite; }
+
+.marquee {
+  overflow: hidden; white-space: nowrap; padding: 20px 0;
+  background: var(--gold); color: #201421;
+}
+.marquee-track { display: inline-flex; gap: 35px; animation: marquee 28s linear infinite; }
+.marquee span { font-family: Georgia, serif; font-size: 16px; letter-spacing: 2px; }
+.marquee .star { font-size: 22px; }
+
+.section { padding: 100px 8%; }
+.section-head { text-align: center; max-width: 700px; margin: 0 auto 55px; }
+.kicker { color: var(--gold); letter-spacing: 4px; font-size: 10px; }
+.section h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 5vw, 55px); font-weight: 400; margin: 18px 0;
+}
+.section-head p { color: var(--muted); line-height: 1.9; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service {
+  padding: 34px 28px; min-height: 245px;
+  background: linear-gradient(145deg, #211827, #17121e);
+  border: 1px solid #473348; position: relative; overflow: hidden;
+  transition: transform .45s, border-color .45s, box-shadow .45s;
+}
+.service::after {
+  content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: left .7s;
+}
+.service:hover { transform: translateY(-9px); border-color: #b99a61; box-shadow: 0 20px 55px #0003; }
+.service:hover::after { left: 100%; }
+.service-icon { font-size: 33px; color: var(--gold); margin-bottom: 25px; }
+.service h3 { font-family: Georgia, serif; font-size: 23px; font-weight: 400; margin-bottom: 12px; }
+.service p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+
+.story {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
+  background: #18121f;
+}
+.story-art {
+  min-height: 390px; position: relative; display: grid; place-items: center;
+  background: radial-gradient(ellipse, #79543a48, transparent 62%), #201727;
+  border: 1px solid #59412f; overflow: hidden;
+}
+.story-art::before, .story-art::after {
+  content: ""; position: absolute; border: 1px solid #e9c78355; border-radius: 50%;
+  width: 75%; aspect-ratio: 1; animation: halo 5s ease-in-out infinite;
+}
+.story-art::after { width: 55%; animation-delay: -2.5s; }
+.story-flower { font-size: clamp(100px, 15vw, 175px); color: var(--gold); z-index: 1; animation: float 5s ease-in-out infinite; text-shadow: 0 0 50px #e9c78335; }
+.story-copy p { color: var(--muted); line-height: 2; margin: 18px 0; }
+.owner { color: var(--gold); font-family: Georgia, serif; font-size: 22px; margin-top: 25px; }
+
+.gallery-note {
+  max-width: 850px; margin: auto; padding: 50px 25px; text-align: center;
+  border: 1px dashed #6a5366; background: #1a1420;
+}
+.gallery-note .camera { font-size: 38px; margin-bottom: 15px; color: var(--gold); }
+.gallery-note p { color: var(--muted); line-height: 1.9; }
+
+.contact-panel {
+  max-width: 1000px; margin: auto; padding: 55px;
+  background: radial-gradient(ellipse at top right, #75513230, transparent 55%), #1b1422;
+  border: 1px solid #59412f;
+}
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 35px 0; }
+.contact-item { padding: 20px; border-bottom: 1px solid #49364a; overflow-wrap: anywhere; }
+.contact-item small { display: block; color: var(--gold); letter-spacing: 2px; font-size: 10px; margin-bottom: 10px; }
+.contact-item p, .contact-item a { font-size: 14px; line-height: 1.8; }
+.contact-item a:hover { color: var(--gold); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+
+footer { border-top: 1px solid #352638; padding: 30px 7%; text-align: center; color: var(--muted); font-size: 12px; line-height: 2; }
+footer strong { color: var(--gold); }
+
+.whatsapp {
+  position: fixed; bottom: 22px; right: 22px; z-index: 90;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; color: white; display: grid; place-items: center;
+  box-shadow: 0 0 0 0 #25d36655;
+  animation: waPulse 2.4s infinite;
+}
+.whatsapp svg { width: 28px; height: 28px; fill: currentColor; }
+
+.reveal { opacity: 0; transform: translateY(35px); transition: opacity .8s, transform .8s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: .12s; }
+.delay-2 { transition-delay: .24s; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-17px) rotate(4deg); } }
+@keyframes halo { 0%,100% { transform: scale(1); opacity: .6; } 50% { transform: scale(1.06); opacity: 1; } }
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes stretch { 0%,100% { transform: scaleY(.5); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
+@keyframes waPulse { 0% { box-shadow: 0 0 0 0 #25d36655; } 70% { box-shadow: 0 0 0 15px #25d36600; } 100% { box-shadow: 0 0 0 0 #25d36600; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+@media (max-width: 800px) {
+  header { padding: 14px 5%; }
+  .brand strong { font-size: 11px; }
+  .brand small { font-size: 8px; letter-spacing: 2px; }
+  .menu-toggle { display: block; }
+  nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    padding: 25px 7%; background: #15101d; border-bottom: 1px solid #59412f;
+    flex-direction: column; align-items: stretch; gap: 22px;
+  }
+  nav.open { display: flex; }
+  nav a { font-size: 15px; }
+  .hero { min-height: 78vh; padding: 85px 7%; }
+  .hero::after { right: -35%; top: 35%; }
+  .hero-note { display: none; }
+  .section { padding: 75px 6%; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service { min-height: auto; }
+  .story { grid-template-columns: 1fr; gap: 38px; }
+  .story-art { min-height: 280px; }
+  .contact-panel { padding: 30px 20px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 5px; }
+}
+</style>
+</head>
+
+<body>
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-name">USHER SAJEA</div>
+    <div class="loader-ring"></div>
+    <p style="color:#c4b8ca;font-size:11px;letter-spacing:3px">DECORATORS</p>
   </div>
+</div>
 
-  <p>
-    Usher Sajea Decorators is dedicated to making your
-    special occasions memorable through thoughtful
-    decoration and creative presentation.
-  </p>
+<canvas id="particles" aria-hidden="true"></canvas>
 
-  <p>
-    <strong>Proprietor:</strong> Gobinda Biswas
-  </p>
-</section>
-
-<section class="contact" id="contact">
-  <div class="section-heading">
-    <h2>Contact Us</h2>
-    <p>Let's make your special occasion memorable.</p>
-  </div>
-
-  <p><strong>Proprietor:</strong> Gobinda Biswas</p>
-
-  <p>
-    <strong>Phone 1:</strong>
-    <a href="tel:8967208093">8967208093</a>
-  </p>
-
-  <p>
-    <strong>Phone 2:</strong>
-    <a href="tel:8250812836">8250812836</a>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:niladrisekharbiswa272@gmail.com">
-      niladrisekharbiswa272@gmail.com
-    </a>
-  </p>
-
-  <p>
-    <strong>Address:</strong><br>
-    DVC More, Malancha, Kanainathshal,<br>
-    Purba Bardhaman, West Bengal – 713103
-  </p>
-
-  <a class="button"
-     href="https://wa.me/918967200938">
-    Contact on WhatsApp
+<header>
+  <a class="brand" href="#home" aria-label="Usher Sajea Decorators home">
+    <span class="brand-icon">✳</span>
+    <span>
+      <strong>USHER SAJEA DECORATORS</strong>
+      <small>ARTISTRY · ELEGANCE · CELEBRATION</small>
+    </span>
   </a>
-</section>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact" class="nav-cta">Contact Us ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">THE ART OF CELEBRATION</div>
+      <h1>We turn moments into <em>memories.</em></h1>
+      <p>
+        Beautiful spaces. Thoughtful details. Extraordinary celebrations.
+        Let Usher Sajea Decorators help you bring your decoration ideas to life.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn btn-gold" href="#contact">DISCUSS YOUR EVENT ↗</a>
+        <a class="btn btn-outline" href="#services">DISCOVER OUR SERVICES</a>
+      </div>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="hero-note">MADE FOR YOUR SPECIAL MOMENTS</div>
+  </section>
+
+  <div class="marquee" aria-label="Beautiful decorations for special celebrations">
+    <div class="marquee-track">
+      <span>ELEGANT DECOR</span><span class="star">✳</span>
+      <span>UNFORGETTABLE CELEBRATIONS</span><span class="star">✳</span>
+      <span>BEAUTIFUL MOMENTS</span><span class="star">✳</span>
+      <span>CREATIVE DETAILS</span><span class="star">✳</span>
+      <span>ELEGANT DECOR</span><span class="star">✳</span>
+      <span>UNFORGETTABLE CELEBRATIONS</span><span class="star">✳</span>
+      <span>BEAUTIFUL MOMENTS</span><span class="star">✳</span>
+      <span>CREATIVE DETAILS</span><span class="star">✳</span>
+    </div>
+  </div>
+
+  <section class="section" id="services">
+    <div class="section-head reveal">
+      <div class="kicker">WHAT WE DO</div>
+      <h2>Every detail matters.</h2>
+      <p>Tell us about your occasion and your ideas. We'll discuss the decoration that best suits your event.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service reveal">
+        <div class="service-icon">✿</div>
+        <h3>Wedding Decoration</h3>
+        <p>Thoughtful decorative concepts for a day you will always remember.</p>
+      </article>
+      <article class="service reveal delay-1">
+        <div class="service-icon">❋</div>
+        <h3>Stage & Venue Décor</h3>
+        <p>Make your event space feel special with carefully planned decoration.</p>
+      </article>
+      <article class="service reveal delay-2">
+        <div class="service-icon">✧</div>
+        <h3>Special Occasions</h3>
+        <p>Decoration ideas for celebrations, family gatherings and memorable events.</p>
+      </article>
+    </div>
+    <p style="text-align:center;color:#a995a9;font-size:11px;margin-top:25px">
+      Services can be updated to match the exact work your business offers.
+    </p>
+  </section>
+
+  <section class="section story" id="about">
+    <div class="story-art reveal" aria-hidden="true">
+      <div class="story-flower">❋</div>
+    </div>
+    <div class="story-copy reveal delay-1">
+      <div class="kicker">OUR STORY</div>
+      <h2>Creating beauty, one celebration at a time.</h2>
+      <p>
+        At Usher Sajea Decorators, we believe that every special occasion
+        deserves care, creativity and attention to detail.
+      </p>
+      <p>
+        Led by proprietor Gobinda Biswas, we welcome enquiries about
+        decoration requirements in Purba Bardhaman and surrounding areas.
+      </p>
+      <div class="owner">Gobinda Biswas</div>
+      <p style="font-size:11px;color:#e9c783;letter-spacing:2px">PROPRIETOR</p>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="section-head reveal">
+      <div class="kicker">A GLIMPSE OF OUR WORK</div>
+      <h2>Moments worth remembering.</h2>
+      <p>Our decoration gallery will feature real event photographs soon.</p>
+    </div>
+    <div class="gallery-note reveal">
+      <div class="camera">✧</div>
+      <h3 style="font-family:Georgia,serif;font-size:25px;font-weight:400;margin-bottom:12px">Our gallery is getting ready.</h3>
+      <p>Real wedding, stage and event decoration photographs will be added here in the next update.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="contact-panel reveal">
+      <div class="kicker">LET'S CONNECT</div>
+      <h2>Have a celebration in mind?</h2>
+      <p style="color:#c4b8ca;line-height:1.9">
+        Contact us to discuss your event, decoration ideas and requirements.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <small>PROPRIETOR</small>
+          <p>Gobinda Biswas</p>
+        </div>
+        <div class="contact-item">
+          <small>PHONE NUMBER 01</small>
+          <a href="tel:+918967208093">+91 89672 08093</a>
+        </div>
+        <div class="contact-item">
+          <small>PHONE NUMBER 02</small>
+          <a href="tel:+918250812836">+91 82508 12836</a>
+        </div>
+        <div class="contact-item">
+          <small>EMAIL</small>
+          <a href="mailto:niladrisekharbiswa272@gmail.com">niladrisekharbiswa272@gmail.com</a>
+        </div>
+        <div class="contact-item" style="grid-column:1/-1">
+          <small>OUR LOCATION</small>
+          <p>DVC More, Malancha, Kanainathshal,<br>Purba Bardhaman, West Bengal – 713103</p>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <a class="btn btn-gold" href="https://wa.me/918967208093" target="_blank" rel="noopener noreferrer">WHATSAPP US ↗</a>
+        <a class="btn btn-outline" href="tel:+918967208093">CALL US</a>
+        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=DVC+More+Malancha+Kanainathshal+Purba+Bardhaman+713103" target="_blank" rel="noopener noreferrer">FIND OUR AREA ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>USHER SAJEA DECORATORS</strong></p>
+  <p>Proprietor: Gobinda Biswas</p>
+  <p>© <span id="year"></span> Usher Sajea Decorators. All rights reserved.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/918967208093"
+   target="_blank" rel="noopener noreferrer" aria-label="Contact Usher Sajea Decorators on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.8 11.8 0 0 0 5.7 1.5h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.5ZM12.1 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.3c0-5.4 4.5-9.9 10-9.9a9.8 9.8 0 0 1 7 2.9 9.8 9.8 0 0 1 2.9 7c0 5.5-4.5 10-9.9 10Zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.5c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/>
+  </svg>
+</a>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+window.addEventListener("load", () => {
+  setTimeout(() => document.getElementById("loader").classList.add("done"), 700);
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
+
+menuToggle.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.textContent = open ? "✕" : "☰";
+});
+
+nav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+let width = 0, height = 0;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const count = reduceMotion ? 0 : Math.min(55, Math.floor(width / 24));
+  particles = Array.from({length: count}, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    r: Math.random() * 1.7 + .5,
+    speed: Math.random() * .32 + .08,
+    drift: (Math.random() - .5) * .25,
+    alpha: Math.random() * .55 + .2
+  }));
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, width, height);
+  particles.forEach(p => {
+    p.y -= p.speed;
+    p.x += p.drift;
+    if (p.y < -5) { p.y = height + 5; p.x = Math.random() * width; }
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(233,199,131,${p.alpha})`;
+    ctx.fill();
+  });
+  if (!reduceMotion) requestAnimationFrame(drawParticles);
+}
+resizeCanvas();
+if (!reduceMotion) drawParticles();
+window.addEventListener("resize", resizeCanvas);
+</script>
+</body>
+</html>
